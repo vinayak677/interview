@@ -1,6 +1,6 @@
 // reverse string
 const reverseString = (str) => {
-  return str.split().reverse().join()
+  return str.split("").reverse().join("")
 };
 console.log(reverseString("javascript"));
 
@@ -21,7 +21,7 @@ const data23=(dat)=>{
 
   let charCount={}
   for(let item of dat){
-    item[dat]=(charCount[item] || 0) + 1
+    charCount[dat]=(charCount[item] || 0) + 1
   }
   return charCount
   }

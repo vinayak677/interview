@@ -1,262 +1,232 @@
+// reverse String
+
+const reverseString=(str)=>{
+return str.split().reverse().join()
+}
+console.log(reverseString("abcdefg"))
+
 // check number is prime
-const isPrime = (num) => {
-if (num < 2) return false;
-for(let i=2;i*i<=num;i++){
-    if(num% i===0){
-        return false;
+const prime=(num)=>{
+if(num < 2) return false
+for(let i=2;i<num;i++){
+    if(num % i=== 0){
+        return false
     }
 }
 return true
 }
-console.log(isPrime(13));
+console.log(prime(13))
 
-const nameCount=(data)=>{
-let charCount={}
-for(let item of data){
-  charCount[item]= (charCount[item] || 0) + 1
+// count letter
+const charCount=(str)=>{
+ let char={}
+ for(let item of str){
+    char[item] = (char[item] || 0) + 1
+ }
+ return char
 }
-return charCount
-}
+console.log(charCount("kjdkqjwwd"))
 
-console.log(nameCount("kjhweraekfj"));
-
-
-// find lasrger
-const large=(num)=>{
-// return Math.max(...num)  
-let max= num[0]
+// find large
+const largNum=(num)=>{
+let max=num[0];
 for(let i=1;i<num.length;i++){
-  max=num[i] > max ? num[i]: max   
+    max= num[i] > max ? num[i]: max
 }
 return max
 }
-console.log(large([1, 2, 3, 4, 5, 6, 7, 8]));
 
-// fabonacci
-let fabinocci=(num)=>{
-    let data=[0,1];
-    for(let i=2;i<num;i++){
-        data.push(data[i-1]+data[i-2])
-    }
-    return data
+console.log(largNum([1, 2, 3, 4, 5, 6, 7, 8]));
+
+// fibonacci
+const fibonacci = (num) => {
+ let data=[0,1];
+ for(let i=2;i<num;i++){
+    data.push(data[i-1] + data[i-2])
+ }
+ return data
 }
-console.log(fabinocci(7))
+console.log(fibonacci(5));
 
 // palindrome
-let palindrome=(str)=>{
-    return str === str.split("").reverse().join("")
+const palindrome=(str)=>{
+    return str== str.split("").reverse().join("")
 }
-console.log(palindrome("madam"))
+console.log(palindrome("madam"));
 
 // vowel count
-let vowelCount=(str)=>{
-    let vowel="aeiou";
-    let count=0
-    for(let i=0;i<str.length;i++){
-        if(vowel.includes(str[i])){
-           count= count+1
-        }
+const vowels=(str)=>{
+ const vow='aeiou'
+ let count=0;
+ let newd=''
+ for(let i=0;i<str.length;i++){
+    if(vow.includes(str[i])){
+       count++
+       newd = newd+ str[i]
     }
-    return count
+ }
+ return count,newd
 }
-console.log(vowelCount("vinayak"))
+console.log(vowels("vinayak"))
+
 
 // remove duplicate
-const removeDuplicate=(num)=>{
-    return num.filter((acc,val) => num.indexOf(acc) === val)
+const remDuplicate=(data)=>{
+    return data.filter((item,index)=> data.indexOf(item) !== index)
 }
-console.log(removeDuplicate([1,1,2,3,4,5,3,2,6,7]))
+console.log(remDuplicate([1, 2, 3, 4, 2, 3, 8, 5, 6, 7, 8]),"index");
 
-// flatten
-  const flatten=(arr)=>{
-       return arr.reduce((acc,val)=>{
-           return Array.isArray(val) ? acc.concat(flatten(val)): acc.concat(val) 
-       },[])
+
+// flatten array
+const flatten=(arr)=>{
+ return arr.reduce((acc,val)=>
+    Array.isArray(val)? acc.concat(flatten(val)): acc.concat(val),[]
+)
+}
+
+console.log(flatten([1, [2, [3, 4], 5]]),"flat");
+
+// missing number
+const missing=(num)=>{
+ for(let i=0;i<num.length;i++){
+    if(num[i+1] - num[i] > 1){
+        return num[i]+1
     }
-console.log(flatten([1,2,[3,[4],[6]]]))
-
-// missing
-  const missingNumber=(num)=>{
-      for(let i=0;i<num.length;i++){
-          if(num[i+1] - num[i] > 1){
-              return num[i]+1
-          }
-      }
-  }
-console.log(missingNumber([1,2,4,5,6,7]))
-
-
-// sorted
-const sorted=(a,b)=>{
-    return [...a,...b].sort((c,d)=> c-d)
-}
-console.log(sorted([1,2,3],[53,8,7]))
-
-// farenheit to celsius
-const farCeli=(far)=>{
-    return ((far - 32) * 5) / 9
-}
-console.log(farCeli(27))
-
-// find last index
-let findlast=(num)=>{
-    return num.findLastIndex((item)=> item=== 7)
-}
-console.log(findlast([22,3,3,5,3,2,5,6,7,833,5,66,77]))
-
-
-// fecth async await
- const fetchdata=async()=>{
-     try{
-         let resp=await fetch("https://");
-         if(!resp.ok){
-             throw new Error(`${resp.status}`)
-         }
-         let data = await resp.json()
-         let resp2= await fetch(`https:${data.id}`)
-         if(!resp2.ok){
-             throw new Error(`${resp2.status}`)
-         }
-         const data2= await resp2.json()
-         console.log(data)
-         return data
-     }catch(error){
-         console.log(error.message)
-     }
  }
-fetchdata();
+}
+console.log(missing(7, 8, 10, 11))
 
-// .then catch
-function fecthData(){
-    fetch("https")
-    .then((resp)=>{
-        if(!resp.ok){
-            throw new Error(`${resp.status}`)
-        }
-        return resp.json()
-    })
-    .then((data)=>{
-        console.log(data)
-    })
-    .catch((error)=>{
-        console.log(error.message)
-    })
+
+// merge sorted
+const sorted=(a,b)=>{
+  return [...a,...b].sort((a,b)=> b - a)
 }
 
+console.log(sorted([1, 3, 4], [6, 7, 9]),"sorted");
 
-// call after 5 sec both 
-// 2 , 1
-let id= new Promise((res,rej)=>{
+// 
+const findInter=(a,b)=>{
+ return a.filter((num)=> b.includes(num))
+}
+console.log(findInter([1, 2, 3], [2, 3, 4]),"inersection");
+
+// findlast
+const temp = [27, 28, 45, 30, 40, 42, 49, 35, 30];
+
+let high= temp.findLast((x)=> x > 40)
+console.log(high)
+
+// toReversed
+const months = ["Jan", "Feb", "Mar", "Apr"];
+const reverse=months.toReversed()
+console.log(reverse)
+console.log(months)
+
+// slice
+let sliced=months.slice(1,3)
+console.log(sliced)  // Feb,Mar
+
+// splice
+const month = ["Jan", "Mar","dec","May"];
+let spliced= month.splice(2,1,"Apr")
+console.log(spliced)
+console.log(months)
+
+
+// maxSum
+const maxProduct=(arr)=>{
+ let maxSum= arr[0];
+ let currSum=arr[0];
+ for(let i=1;i<arr.length;i++){
+    if(currSum < 0){
+      currSum=arr[i]
+      maxSum= maxSum > currSum ? maxSum : currSum
+    }else{
+      currSum +=arr[i]
+      maxSum= maxSum > currSum ? maxSum : currSum
+    }
+ }
+ return maxSum
+}
+console.log(maxProduct([1, 3, -5, 5, 9, -9, -9]),"maxsum");
+
+
+// fizzBuzz
+const fizzBuzz=(num)=>{
+ for(let i=1;i<=num;i++){
+    if( i % 3=== 0 && i % 5 === 0){
+        console.log("fizzBuzz") 
+    }else if(i % 3 ===0){
+        console.log("fizz") 
+    } else if( i % 5=== 0){
+        console.log("buzz") 
+    } else{
+        console.log(i) 
+    }
+ }
+}
+console.log(fizzBuzz(15))
+
+// promise
+
+let p1= new Promise((res,rej)=>{
     setTimeout(()=>{
-        res("1")
-    },1000)
+      res("1")
+    },2000)
 })
 
-async function fetchdatas(){
-    let respData= await id
-    console.log("2")
-    console.log(respData)
+async function fetchData(){
+    let p2= await p1
+    console.log("2");
+    console.log(p2)
 }
-fetchdatas()
-
+fetchData()
 
 // promise all
-let allData = async () => {
-    try {
-        const [id, user] = await Promise.all([
-            fetch("https://jsonplaceholder.typicode.com/posts/1").then((resp1) => resp1.json()),
-            fetch("https://jsonplaceholder.typicode.com/users/1").then((resp2) => resp2.json()),
-        ]);
-        console.log(id, user);
-    } catch (error) {
-        console.log("Error:", error.message);
-    }
-};
 
-allData();
-
+const get=async()=>{
+ try{
+   const[name,post]= await Promise.all([
+    fetch("").then((resp)=>resp.json()),
+    fetch("").then((resp)=>resp.json())
+   ])
+   console.log(name,post)
+ }catch(error){
+    console.log(error)
+ }
+}
 
 // promise any
-let anyOne = async () => {
-    try {
-        let getData = await Promise.any([
-            fetch("https://jsonplaceholder.typicode.com/posts/1").then((resp) => resp.json()),
-            fetch("https://jsonplaceholder.typicode.com/users/1").then((resp2) => resp2.json())
-        ]);
-        console.log(getData);
-    } catch (error) {
-        console.log("Error:", error.message);
-    }
-};
 
-anyOne();
-
-
-// deep copy
-let vinAddress = { name: "vinayak", address: { city: "snk" } };
-let deep = JSON.parse(JSON.stringify(vinAddress));  // Deep copy
-
-deep.name = "vk";
-deep.address.city = "sv";
-
-console.log(deep);       // { name: 'vk', address: { city: 'sv' } }
-console.log(vinAddress); // { name: 'vinayak', address: { city: 'snk' } } ← unchanged ✅
-
-
-// shallow copy
-let vinAddress1 = { name: "vinayak", address: { city: "snk" } };
-let shallow = { ...vinAddress1 };  // Shallow copy
-
-shallow.name = "vk";
-shallow.address.city = "sv";
-
-console.log(shallow);       // { name: 'vk', address: { city: 'sv' } }
-console.log(vinAddress1);   // { name: 'vinayak', address: { city: 'sv' } } ← changed ❌
-
-
-
-// this
-const obj={
-    name:"vinayak",
-    age:function(){
-        console.log(this.name)
+const get1= async()=>{
+    try{
+        const anyone =await Promise.any([
+            fetch('').then((resp)=>resp.json()),
+            fetch('').then((resp)=>resp.json())
+        ])
+        console.log(anyone)
+    }catch(error){
+       console.log(error)
     }
 }
-const data=obj.age()
+
+// shallow
+let address= {name:"vk", address:{city:"snk"} }
+
+let shallow= {...address}
+
+shallow.name="vk1"
+shallow.address.city="snk1"
+console.log(address)
+console.log(shallow)
 
 
-const position={job:"FE"}; 
+// deep
+let address1= {name:"pk",address:{city:'bgm'}}
 
-// call
-const printJob=function(name,age){
-    console.log(name,age,this.job)
-}
-printJob.call(position,"vk","36")
+let deep= JSON.parse(JSON.stringify(address1));
 
-// apply
-const prinnt=function(age,name){
-    console.log(age,name,this.position)
-}
-prinnt.apply(position,["33","gh"])
-
-// bind
-const prr= function(age,name){
-    console.log(age,name,this.position)
-}
-const aa=prr.bind(position,"30","vina")
-aa() // "30 vina FE"
-
-
-// callback function
-
-let date=(callback)=>{
-    console.log("hello")
-    let call=callback()
-    console.log(call)
-}
-
-let first=()=>{
-    return "good bye"
-}
-
-date(first)
+deep.name="pk1"
+deep.address.city="bgm1"
+console.log(address1)
+console.log(deep)
