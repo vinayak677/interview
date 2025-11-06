@@ -29,9 +29,10 @@ const FormPost = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    fetchDta();
+    await fetchDta();
+    setFormData({name:"",age:""})
     console.log(formData);
   };
 

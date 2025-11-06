@@ -27,8 +27,6 @@ function App() {
        <CounterContext>
 
     <div className="App">
-      {/* <CounRef/>   */}
-      {/* <Countter/> */}
       {/* <Debounces/> */}
       {/* <Todo/>  */}
       {/* <Forms/> */}
@@ -36,9 +34,11 @@ function App() {
       {/* <Memo/>
       <Usememo/> */}
       {/* <CallbackChild/> */}
-      {/* <Range/> */}
        {/* <Timer/> */}
+      {/* <CounRef/>   */}
       {/* <Ref/> */}
+      {/* <Range/> */}
+      {/* <Countter/> */}
       {/* <CountRedux/> */}
       {/* <StartStop/> */}
 
